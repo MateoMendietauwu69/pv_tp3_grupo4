@@ -58,3 +58,7 @@ const proyectoService = (() => {
 })();
 
 export default proyectoService;
+export default obtenerProyectos;
+export default agregarProyecto;
+export default eliminarProyecto;
+export default buscarProyecto;
