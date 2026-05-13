@@ -1,12 +1,23 @@
-//import obtenerProyectos from '../services/proyectoService.js'
+import proyectoService from '../services/proyectoService.js'
 
 function ListaPro() {
 
+    const pro = proyectoService.obtenerProyectos()
+
     return(
         <>
-            <nav>
-                <a>proyectos</a>
-            </nav>
+            <div>
+                <h2>Lista de Proyectos</h2>
+                <ul>
+                    {pro.map(proyecto =>(
+                        <li>
+                            {proyecto.titulo}
+                            {proyecto.categoria}
+                            {proyecto.estado}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </>
     )
 }
