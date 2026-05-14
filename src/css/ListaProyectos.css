@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Asimovian&family=Bangers&display=swap");
+
+div, h2{
+    font-family: 'Asimovian', sans-serif;
+}
+
+ul{
+    list-style-type: none;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
