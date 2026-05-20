@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import proyectoService from '../services/proyectoService.js'
+import FormularioProyecto from './FormularioProyecto.jsx'
 import '../css/ListaProyectos.css'
 import DetalleProyecto from './DetalleProyecto.jsx'
 
@@ -12,19 +13,10 @@ function ListaPro() {
     const [nuevoEstado, setNuevoEstado] = useState('Pendiente')
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null)
 
-    const handleAgregar = () => {
-        if (nuevoTitulo.trim() === '' || nuevaCategoria.trim() === '') return
-        const nuevo = {
-            id: Date.now(),
-            titulo: nuevoTitulo,
-            categoria: nuevaCategoria,
-            estado: nuevoEstado
-        }
-        proyectoService.agregarProyecto(nuevo)
+    // Callback que recibe el nuevo proyecto desde FormularioProyecto
+    const handleAgregar = (nuevoProyecto) => {
+        proyectoService.agregarProyecto(nuevoProyecto)
         setProyectos(proyectoService.obtenerProyectos())
-        setNuevoTitulo('')
-        setNuevaCategoria('')
-        setNuevoEstado('Pendiente')
     }
 
     const handleEliminar = (id) => {
@@ -53,25 +45,8 @@ function ListaPro() {
                     onChange={(e) => handleBuscar(e.target.value)}
                 />
 
-                <h3>Agregar Proyecto</h3>
-                <input
-                    type="text"
-                    placeholder="Titulo"
-                    value={nuevoTitulo}
-                    onChange={(e) => setNuevoTitulo(e.target.value)}
-                />
-                <input
-                    type="text"
-                    placeholder="Categoria"
-                    value={nuevaCategoria}
-                    onChange={(e) => setNuevaCategoria(e.target.value)}
-                />
-                <select value={nuevoEstado} onChange={(e) => setNuevoEstado(e.target.value)}>
-                    <option value="Pendiente">Pendiente</option>
-                    <option value="En curso">En curso</option>
-                    <option value="Completado">Completado</option>
-                </select>
-                <button onClick={handleAgregar}>Agregar</button>
+                {/* Componente FormularioProyecto separado */}
+                <FormularioProyecto onAgregar={handleAgregar} />
 
                 <ul>
                     {proyectos.map(proyecto => (
