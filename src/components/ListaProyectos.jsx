@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import proyectoService from '../services/proyectoService.js'
 import '../css/ListaProyectos.css'
+import DetalleProyecto from './DetalleProyecto.jsx'
+
 function ListaPro() {
 
     const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos())
@@ -8,6 +10,7 @@ function ListaPro() {
     const [nuevoTitulo, setNuevoTitulo] = useState('')
     const [nuevaCategoria, setNuevaCategoria] = useState('')
     const [nuevoEstado, setNuevoEstado] = useState('Pendiente')
+    const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null)
 
     const handleAgregar = () => {
         if (nuevoTitulo.trim() === '' || nuevaCategoria.trim() === '') return
@@ -75,9 +78,13 @@ function ListaPro() {
                         <li key={proyecto.id}>
                             {proyecto.titulo} - {proyecto.categoria} - {proyecto.estado}
                             <button onClick={() => handleEliminar(proyecto.id)}>Eliminar</button>
+                            <button onClick={() => setProyectoSeleccionado(proyecto)}>
+                            Ver detalle
+                            </button>
                         </li>
                     ))}
                 </ul>
+                <DetalleProyecto proyecto={proyectoSeleccionado} />
             </div>
         </>
     )
