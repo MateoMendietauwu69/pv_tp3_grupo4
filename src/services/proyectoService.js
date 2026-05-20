@@ -5,17 +5,14 @@ const proyectoService = (() => {
             titulo: "Proyecto 1", 
             categoria: "Gaming", 
             estado: "En curso",
-            descripcion: "Proyecto de gaming " ,
+            descripcion: "Proyecto de gaming",
             recursos: {
-                    pdf: "manual.pdf",
-                    drive: "drive link",
-                    github: "github link"
-                    },
+                pdf: "manual.pdf",
+                drive: "drive link",
+                github: "github link"
+            },
             equipo: [
-            {
-            nombre: "Juan",
-            rol: "Frontend"
-            }
+                { nombre: "David", rol: "Administrador" }
             ]
         },
         { 
@@ -23,17 +20,14 @@ const proyectoService = (() => {
             titulo: "Proyecto 2", 
             categoria: "Educación", 
             estado: "Completado",
-            descripcion: "Proyecto de gaming " ,
+            descripcion: "Proyecto educativo EDM",
             recursos: {
-                    pdf: "manual.pdf",
-                    drive: "drive link",
-                    github: "github link"
-                    },
+                pdf: "manual.pdf",
+                drive: "drive link",
+                github: "github link"
+            },
             equipo: [
-            {
-            nombre: "Juan",
-            rol: "Frontend"
-            }
+                { nombre: "Mateo", rol: "Lider" }
             ]
         },
         { 
@@ -41,17 +35,14 @@ const proyectoService = (() => {
             titulo: "Proyecto 3", 
             categoria: "Agricultura", 
             estado: "Pendiente",
-            descripcion: "Proyecto de gaming " ,
+            descripcion: "Proyecto de plantamiento de manzanos",
             recursos: {
-                    pdf: "manual.pdf",
-                    drive: "drive link",
-                    github: "github link"
-                    },
+                pdf: "manual.pdf",
+                drive: "drive link",
+                github: "github link"
+            },
             equipo: [
-            {
-            nombre: "Juan",
-            rol: "Frontend"
-            }
+                { nombre: "Erick", rol: "Estilista de css" }
             ]
         },
         { 
@@ -59,17 +50,14 @@ const proyectoService = (() => {
             titulo: "Proyecto 4", 
             categoria: "Economia", 
             estado: "En curso",
-            descripcion: "Proyecto de gaming " ,
+            descripcion: "Proyecto conteo de dinero de la empresa",
             recursos: {
-                    pdf: "manual.pdf",
-                    drive: "drive link",
-                    github: "github link"
-                    },
+                pdf: "manual.pdf",
+                drive: "drive link",
+                github: "github link"
+            },
             equipo: [
-            {
-            nombre: "Juan",
-            rol: "Frontend"
-            }
+                { nombre: "Lautaro", rol: "Marketing" }
             ]
         },
         { 
@@ -77,26 +65,50 @@ const proyectoService = (() => {
             titulo: "Proyecto 5", 
             categoria: "Comida", 
             estado: "Pendiente",
-            descripcion: "Proyecto de gaming " ,
+            descripcion: "Proyecto de desarrollo de hamburguesas",
             recursos: {
-                    pdf: "manual.pdf",
-                    drive: "drive link",
-                    github: "github link"
-                    },
+                pdf: "manual.pdf",
+                drive: "drive link",
+                github: "github link"
+            },
             equipo: [
-            {
-            nombre: "Juan",
-            rol: "Frontend"
-            }
+                { nombre: "David", rol: "Administrador" }
             ]
         }
     ];
 
-    //funciones flecha 
+    //creamos una funcion para validar la estructura del proyecto antes de agregarlo o actualizarlo
+    const esEstructuraValida = (proyecto) => {
+        const camposRaiz = ["id", "titulo", "categoria", "estado", "descripcion", "recursos", "equipo"];
+        const tieneCamposRaiz = camposRaiz.every(prop => prop in proyecto);
+        
+        if (!tieneCamposRaiz) return false;
+
+        const recursos = proyecto.recursos;
+        const camposRecursos = ["pdf", "drive", "github"];
+        const esObjeto = recursos && typeof recursos === "object" && !Array.isArray(recursos);
+        const tieneCamposRecursos = esObjeto && camposRecursos.every(prop => prop in recursos);
+
+        if (!tieneCamposRecursos) return false;
+
+        const equipo = proyecto.equipo;
+        const esArrayEquipo = Array.isArray(equipo);
+        const integrantesValidos = esArrayEquipo && equipo.every(integrante => 
+            integrante && typeof integrante === "object" && "nombre" in integrante && "rol" in integrante
+        );
+
+        return integrantesValidos;
+    };
+
     const obtenerProyectos = () => [...proyectos];
 
     const agregarProyecto = (nuevoProyecto) => {
+        if (!esEstructuraValida(nuevoProyecto)) {
+            console.error("Error al agregar: El objeto no cumple con la estructura requerida de un proyecto.");
+            return false;
+        }
         proyectos = [...proyectos, nuevoProyecto];
+        return true;
     };
 
     const eliminarProyecto = (id) => {
@@ -109,16 +121,31 @@ const proyectoService = (() => {
         );
     };
 
+    const actualizarProyecto = (id, proyectoActualizado) => {
+        const simulacionProyecto = { id, ...proyectoActualizado };
+        
+        if (!esEstructuraValida(simulacionProyecto)) {
+            console.error("Error al actualizar: Los datos enviados no coinciden con la estructura permitida.");
+            return false;
+        }
+
+        const indice = proyectos.findIndex(p => p.id === id);
+        if (indice !== -1) {
+            proyectos[indice] = simulacionProyecto;
+            return true;
+        }
+        
+        console.warn(`No se encontró ningún proyecto con el ID: ${id}`);
+        return false;
+    };
+
     return {
         obtenerProyectos,
         agregarProyecto,
         eliminarProyecto,
-        buscarProyecto
+        buscarProyecto,
+        actualizarProyecto 
     };
 })();
 
 export default proyectoService;
-//export default obtenerProyectos;
-//export default agregarProyecto;
-//export default eliminarProyecto;
-//export default buscarProyecto;
