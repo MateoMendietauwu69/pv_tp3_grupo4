@@ -53,7 +53,7 @@ function FormularioProyecto({ onAgregar }) {
     <div className="formulario-container">
       <h3>Agregar Proyecto</h3>
       <form onSubmit={handleSubmit}>
-        <input
+        <input 
           type="text"
           name="titulo"
           placeholder="Título del proyecto"
@@ -72,7 +72,7 @@ function FormularioProyecto({ onAgregar }) {
           <option value="En curso">En curso</option>
           <option value="Completado">Completado</option>
         </select>
-        <input
+        <input 
           type="text"
           name="descripcion"
           placeholder="Descripción del proyecto"
