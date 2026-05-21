@@ -9,6 +9,11 @@ function FormularioProyecto({ onAgregar }) {
     estado: "Pendiente",
     descripcion: "",
     fecha: "",
+    pdf: "",
+    drive: "",
+    github: "",
+    nombre: "",
+    rol: "",
   });
 
   const {
@@ -16,7 +21,12 @@ function FormularioProyecto({ onAgregar }) {
     categoria,
     estado,
     descripcion,
-    fecha
+    fecha,
+    pdf,
+    drive,
+    github,
+    nombre,
+    rol
   } = formulario;
 
   const handleChange = (e) => {
@@ -47,6 +57,18 @@ function FormularioProyecto({ onAgregar }) {
       estado,
       descripcion,
       fecha,
+
+      recursos: {
+        pdf,
+        drive,
+        github,
+      },
+
+      equipo: [{
+        nombre,
+        rol,
+      }]
+
     };
 
     onAgregar(nuevoProyecto);
@@ -57,6 +79,11 @@ function FormularioProyecto({ onAgregar }) {
       estado: "Pendiente",
       descripcion: "",
       fecha: "",
+      pdf: "",
+      drive: "",
+      github: "",
+      nombre: "",
+      rol: "",
     });
   };
 
@@ -115,6 +142,46 @@ function FormularioProyecto({ onAgregar }) {
           type="date"
           name="fecha"
           value={fecha}
+          onChange={handleChange}
+        />
+
+        <input 
+          type="text"
+          name="pdf"
+          placeholder="Link PDF"
+          value={pdf}
+          onChange={handleChange}
+        />
+
+        <input 
+          type="text"
+          name="drive"
+          placeholder="Link Drive"
+          value={drive}
+          onChange={handleChange}
+        />
+
+        <input 
+          type="text"
+          name="github"
+          placeholder="Link Github"
+          value={github}
+          onChange={handleChange}
+        />
+
+        <input 
+          type="text"
+          name="nombre"
+          placeholder="Nombre integrante"
+          value={nombre}
+          onChange={handleChange}
+        />
+
+        <input 
+          type="text"
+          name="rol"
+          placeholder="Rol integrante"
+          value={rol}
           onChange={handleChange}
         />
 
