@@ -3,6 +3,8 @@ import proyectoService from '../services/proyectoService.js'
 import FormularioProyecto from './FormularioProyecto.jsx'
 import '../css/ListaProyectos.css'
 import DetalleProyecto from './DetalleProyecto.jsx'
+// 1. IMPORTAMOS EL COMPONENTE CARD:
+import ProyectoCard from './proyectoCard.jsx' 
 
 function ListaPro() {
 
@@ -13,7 +15,6 @@ function ListaPro() {
     const [nuevoEstado, setNuevoEstado] = useState('Pendiente')
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null)
 
-    // Callback que recibe el nuevo proyecto desde FormularioProyecto
     const handleAgregar = (nuevoProyecto) => {
         proyectoService.agregarProyecto(nuevoProyecto)
         setProyectos(proyectoService.obtenerProyectos())
@@ -45,18 +46,17 @@ function ListaPro() {
                     onChange={(e) => handleBuscar(e.target.value)}
                 />
 
-                {/* Componente FormularioProyecto separado */}
                 <FormularioProyecto onAgregar={handleAgregar} />
 
                 <ul>
                     {proyectos.map(proyecto => (
-                        <li key={proyecto.id}>
-                            {proyecto.titulo} - {proyecto.categoria} - {proyecto.estado}
-                            <button onClick={() => handleEliminar(proyecto.id)}>Eliminar</button>
-                            <button onClick={() => setProyectoSeleccionado(proyecto)}>
-                            Ver detalle
-                            </button>
-                        </li>
+                        /* 2. ACÁ ESTÁ EL REFACTOR: Usamos el componente y le pasamos las props */
+                        <ProyectoCard 
+                            key={proyecto.id} 
+                            proyecto={proyecto}
+                            onSeleccionar={setProyectoSeleccionado}
+                            onEliminar={handleEliminar}
+                        />
                     ))}
                 </ul>
                 <DetalleProyecto proyecto={proyectoSeleccionado} />
