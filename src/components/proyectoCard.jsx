@@ -1,20 +1,44 @@
-function proyectoCard({proyecto}){
+const ProyectoCard = ({
+    proyecto,
+    onEliminar,
+    onSeleccionar
+}) => {
 
-    const {titulo, categoria, estado, id} = proyecto;
-    
-    return(
-      
-        <div className="card">
-            <h2>{titulo}</h2>
-            <p><strong>categooria:</strong> {categoria}</p>
-            <p><strong>estado: {estado}</strong></p>
-            <button onClick={() => setProyectoSeleccionado(proyecto)}>
-            Ver detalle
-            </button>
-            <button>Eliminar</button>
-        </div>
+    const {
+        id,
+        titulo,
+        categoria,
+        estado
+    } = proyecto
 
-    );
+    return (
+
+        <li id='Proyectos'>
+
+            <div>
+                {titulo} - {categoria} - {estado}
+            </div>
+
+            <div id='botones'>
+
+                <button
+                    className='boton'
+                    onClick={() => onEliminar(id)}
+                >
+                    Eliminar
+                </button>
+
+                <button
+                    className='boton'
+                    onClick={() => onSeleccionar(proyecto)}
+                >
+                    Ver detalle
+                </button>
+
+            </div>
+
+        </li>
+    )
 }
 
-export default proyectoCard
+export default ProyectoCard

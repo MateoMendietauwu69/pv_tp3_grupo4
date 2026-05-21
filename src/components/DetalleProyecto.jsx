@@ -1,11 +1,14 @@
 const DetalleProyecto = ({ proyecto }) => {
 
     if (!proyecto) {
+
         return (
             <h2>No hay proyecto seleccionado</h2>
         )
     }
+
     return (
+
         <div className="detalle-proyecto">
 
             <h2>{proyecto.titulo}</h2>
@@ -18,30 +21,35 @@ const DetalleProyecto = ({ proyecto }) => {
                 <strong>Estado:</strong> {proyecto.estado}
             </p>
 
-            <hr />
-
-            <h3>Descripción</h3>
-
             <p>
-                {proyecto.descripcion}
+                <strong>Descripción:</strong> {proyecto.descripcion}
             </p>
 
-            <hr />
+            <p>
+                <strong>Fecha:</strong> {proyecto.fecha}
+            </p>
 
             <h3>Recursos</h3>
 
             <ul>
-                <li>PDF: {proyecto.recursos?.pdf}</li>
-                <li>Drive: {proyecto.recursos?.drive}</li>
-                <li>GitHub: {proyecto.recursos?.github}</li>
-            </ul>
+                <li>
+                    PDF: {proyecto.recursos?.pdf}
+                </li>
 
-            <hr />
+                <li>
+                    Drive: {proyecto.recursos?.drive}
+                </li>
+
+                <li>
+                    GitHub: {proyecto.recursos?.github}
+                </li>
+            </ul>
 
             <h3>Equipo</h3>
 
             {
                 proyecto.equipo?.map((miembro, index) => (
+
                     <div key={index}>
 
                         <p>
@@ -55,6 +63,7 @@ const DetalleProyecto = ({ proyecto }) => {
                     </div>
                 ))
             }
+
         </div>
     )
 }

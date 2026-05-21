@@ -1,67 +1,97 @@
 import { useState } from 'react'
 import proyectoService from '../services/proyectoService.js'
 import FormularioProyecto from './FormularioProyecto.jsx'
-import '../css/ListaProyectos.css'
+import ProyectoCard from './ProyectoCard.jsx'
 import DetalleProyecto from './DetalleProyecto.jsx'
+
+import '../css/ListaProyectos.css'
 
 function ListaPro() {
 
-    const [proyectos, setProyectos] = useState(proyectoService.obtenerProyectos())
+    const [proyectos, setProyectos] = useState(
+        proyectoService.obtenerProyectos()
+    )
+
     const [busqueda, setBusqueda] = useState('')
-    const [nuevoTitulo, setNuevoTitulo] = useState('')
-    const [nuevaCategoria, setNuevaCategoria] = useState('')
-    const [nuevoEstado, setNuevoEstado] = useState('Pendiente')
+
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null)
 
-    // Callback que recibe el nuevo proyecto desde FormularioProyecto
+    // Agregar proyecto
     const handleAgregar = (nuevoProyecto) => {
+
         proyectoService.agregarProyecto(nuevoProyecto)
-        setProyectos(proyectoService.obtenerProyectos())
+
+        setProyectos(
+            proyectoService.obtenerProyectos()
+        )
     }
 
+    // Eliminar proyecto
     const handleEliminar = (id) => {
+
         proyectoService.eliminarProyecto(id)
-        setProyectos(proyectoService.obtenerProyectos())
+
+        setProyectos(
+            proyectoService.obtenerProyectos()
+        )
     }
 
+    // Buscar proyecto
     const handleBuscar = (texto) => {
+
         setBusqueda(texto)
+
         if (texto.trim() === '') {
-            setProyectos(proyectoService.obtenerProyectos())
+
+            setProyectos(
+                proyectoService.obtenerProyectos()
+            )
+
         } else {
-            setProyectos(proyectoService.buscarProyecto(texto))
+
+            setProyectos(
+                proyectoService.buscarProyecto(texto)
+            )
         }
     }
 
     return(
         <>
             <div>
+
                 <h2>Lista de Proyectos</h2>
 
-                <input id='busqueda'
+                <input
+                    id='busqueda'
                     type="text"
                     placeholder="Buscar proyecto..."
                     value={busqueda}
                     onChange={(e) => handleBuscar(e.target.value)}
                 />
 
-                {/* Componente FormularioProyecto separado */}
-                <FormularioProyecto onAgregar={handleAgregar} />
+                <FormularioProyecto
+                    onAgregar={handleAgregar}
+                />
 
                 <ul>
-                    {proyectos.map(proyecto => (
-                        <li id='Proyectos' key={proyecto.id}>
-                            <div>
-                            {proyecto.titulo} - {proyecto.categoria} - {proyecto.estado}
-                            </div>
-                            <div id='botones'>
-                            <button className='boton' onClick={() => handleEliminar(proyecto.id)}>Eliminar</button>
-                            <button className='boton' onClick={() => setProyectoSeleccionado(proyecto)}>Ver detalle</button>
-                            </div>
-                        </li>
+
+                    {proyectos.map((proyecto) => (
+
+                        <ProyectoCard
+                            key={proyecto.id}
+                            proyecto={proyecto}
+                            onEliminar={handleEliminar}
+                            onSeleccionar={setProyectoSeleccionado}
+                        />
+
                     ))}
+
                 </ul>
-                <DetalleProyecto proyecto={proyectoSeleccionado} />
+
+                <DetalleProyecto
+                    proyecto={proyectoSeleccionado}
+                />
+
             </div>
         </>
     )
