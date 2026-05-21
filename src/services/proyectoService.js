@@ -1,151 +1,190 @@
-const proyectoService = (() => {
-    let proyectos = [
-        { 
-            id: 1, 
-            titulo: "Proyecto 1", 
-            categoria: "Gaming", 
-            estado: "En curso",
-            descripcion: "Proyecto de gaming",
-            recursos: {
-                pdf: "manual.pdf",
-                drive: "drive link",
-                github: "github link"
-            },
-            equipo: [
-                { nombre: "David", rol: "Administrador" }
-            ]
+let proyectos = [
+
+    { 
+        id: 1, 
+        titulo: "Proyecto 1", 
+        categoria: "Gaming", 
+        estado: "En curso",
+
+        descripcion:
+            "Proyecto enfocado en el desarrollo de una plataforma gaming interactiva para jugadores online.",
+
+        fecha: "2026-05-20",
+
+        recursos: {
+            pdf: "manual_gaming.pdf",
+            drive: "https://drive.google.com/gaming",
+            github: "https://github.com/gaming-project"
         },
-        { 
-            id: 2, 
-            titulo: "Proyecto 2", 
-            categoria: "Educación", 
-            estado: "Completado",
-            descripcion: "Proyecto educativo EDM",
-            recursos: {
-                pdf: "manual.pdf",
-                drive: "drive link",
-                github: "github link"
+
+        equipo: [
+            {
+                nombre: "Juan",
+                rol: "Frontend"
             },
-            equipo: [
-                { nombre: "Mateo", rol: "Lider" }
-            ]
+            {
+                nombre: "Lucia",
+                rol: "Backend"
+            }
+        ]
+    },
+
+    { 
+        id: 2, 
+        titulo: "Proyecto 2", 
+        categoria: "Educación", 
+        estado: "Completado",
+
+        descripcion:
+            "Sistema educativo pensado para mejorar el aprendizaje virtual en escuelas secundarias.",
+
+        fecha: "2026-05-18",
+
+        recursos: {
+            pdf: "manual_educacion.pdf",
+            drive: "https://drive.google.com/educacion",
+            github: "https://github.com/educacion-project"
         },
-        { 
-            id: 3, 
-            titulo: "Proyecto 3", 
-            categoria: "Agricultura", 
-            estado: "Pendiente",
-            descripcion: "Proyecto de plantamiento de manzanos",
-            recursos: {
-                pdf: "manual.pdf",
-                drive: "drive link",
-                github: "github link"
+
+        equipo: [
+            {
+                nombre: "Ana",
+                rol: "Diseñadora UX/UI"
             },
-            equipo: [
-                { nombre: "Erick", rol: "Estilista de css" }
-            ]
+            {
+                nombre: "Pedro",
+                rol: "Frontend"
+            }
+        ]
+    },
+
+    { 
+        id: 3, 
+        titulo: "Proyecto 3", 
+        categoria: "Agricultura", 
+        estado: "Pendiente",
+
+        descripcion:
+            "Aplicación destinada al monitoreo de cultivos y administración agrícola inteligente.",
+
+        fecha: "2026-05-25",
+
+        recursos: {
+            pdf: "manual_agricultura.pdf",
+            drive: "https://drive.google.com/agricultura",
+            github: "https://github.com/agricultura-project"
         },
-        { 
-            id: 4, 
-            titulo: "Proyecto 4", 
-            categoria: "Economia", 
-            estado: "En curso",
-            descripcion: "Proyecto conteo de dinero de la empresa",
-            recursos: {
-                pdf: "manual.pdf",
-                drive: "drive link",
-                github: "github link"
+
+        equipo: [
+            {
+                nombre: "Marcos",
+                rol: "Analista de Datos"
             },
-            equipo: [
-                { nombre: "Lautaro", rol: "Marketing" }
-            ]
+            {
+                nombre: "Sofia",
+                rol: "Backend"
+            }
+        ]
+    },
+
+    { 
+        id: 4, 
+        titulo: "Proyecto 4", 
+        categoria: "Economia", 
+        estado: "En curso",
+
+        descripcion:
+            "Sistema de gestión económica para controlar gastos, ingresos y estadísticas financieras.",
+
+        fecha: "2026-05-27",
+
+        recursos: {
+            pdf: "manual_economia.pdf",
+            drive: "https://drive.google.com/economia",
+            github: "https://github.com/economia-project"
         },
-        { 
-            id: 5, 
-            titulo: "Proyecto 5", 
-            categoria: "Comida", 
-            estado: "Pendiente",
-            descripcion: "Proyecto de desarrollo de hamburguesas",
-            recursos: {
-                pdf: "manual.pdf",
-                drive: "drive link",
-                github: "github link"
+
+        equipo: [
+            {
+                nombre: "Carlos",
+                rol: "Backend"
             },
-            equipo: [
-                { nombre: "David", rol: "Administrador" }
-            ]
-        }
-    ];
+            {
+                nombre: "Valentina",
+                rol: "Frontend"
+            }
+        ]
+    },
 
-    //creamos una funcion para validar la estructura del proyecto antes de agregarlo o actualizarlo
-    const esEstructuraValida = (proyecto) => {
-        const camposRaiz = ["id", "titulo", "categoria", "estado", "descripcion", "recursos", "equipo"];
-        const tieneCamposRaiz = camposRaiz.every(prop => prop in proyecto);
-        
-        if (!tieneCamposRaiz) return false;
+    { 
+        id: 5, 
+        titulo: "Proyecto 5", 
+        categoria: "Comida", 
+        estado: "Pendiente",
 
-        const recursos = proyecto.recursos;
-        const camposRecursos = ["pdf", "drive", "github"];
-        const esObjeto = recursos && typeof recursos === "object" && !Array.isArray(recursos);
-        const tieneCamposRecursos = esObjeto && camposRecursos.every(prop => prop in recursos);
+        descripcion:
+            "Aplicación para pedidos de comida online con seguimiento en tiempo real y pagos digitales.",
 
-        if (!tieneCamposRecursos) return false;
+        fecha: "2026-05-30",
 
-        const equipo = proyecto.equipo;
-        const esArrayEquipo = Array.isArray(equipo);
-        const integrantesValidos = esArrayEquipo && equipo.every(integrante => 
-            integrante && typeof integrante === "object" && "nombre" in integrante && "rol" in integrante
-        );
+        recursos: {
+            pdf: "manual_comida.pdf",
+            drive: "https://drive.google.com/comida",
+            github: "https://github.com/comida-project"
+        },
 
-        return integrantesValidos;
-    };
+        equipo: [
+            {
+                nombre: "Matias",
+                rol: "Frontend"
+            },
+            {
+                nombre: "Camila",
+                rol: "Tester QA"
+            }
+        ]
+    }
 
-    const obtenerProyectos = () => [...proyectos];
+];
+const obtenerProyectos = () => {
 
-    const agregarProyecto = (nuevoProyecto) => {
-        if (!esEstructuraValida(nuevoProyecto)) {
-            console.error("Error al agregar: El objeto no cumple con la estructura requerida de un proyecto.");
-            return false;
-        }
-        proyectos = [...proyectos, nuevoProyecto];
-        return true;
-    };
+    return [...proyectos]
+}
 
-    const eliminarProyecto = (id) => {
-        proyectos = proyectos.filter(p => p.id !== id);
-    };
+const agregarProyecto = (nuevoProyecto) => {
 
-    const buscarProyecto = (texto) => {
-        return proyectos.filter(p => 
-            p.titulo.toLowerCase().includes(texto.toLowerCase())
-        );
-    };
+    proyectos.push(nuevoProyecto)
+}
 
-    const actualizarProyecto = (id, proyectoActualizado) => {
-        const simulacionProyecto = { id, ...proyectoActualizado };
-        
-        if (!esEstructuraValida(simulacionProyecto)) {
-            console.error("Error al actualizar: Los datos enviados no coinciden con la estructura permitida.");
-            return false;
-        }
+const eliminarProyecto = (id) => {
 
-        const indice = proyectos.findIndex(p => p.id === id);
-        if (indice !== -1) {
-            proyectos[indice] = simulacionProyecto;
-            return true;
-        }
-        
-        console.warn(`No se encontró ningún proyecto con el ID: ${id}`);
-        return false;
-    };
+    const index = proyectos.findIndex(
+        proyecto => proyecto.id === id
+    )
 
-    return {
-        obtenerProyectos,
-        agregarProyecto,
-        eliminarProyecto,
-        buscarProyecto,
-        actualizarProyecto 
-    };
-})();
+    if (index !== -1) {
 
-export default proyectoService;
+        proyectos.splice(index, 1)
+    }
+}
+
+const buscarProyecto = (texto) => {
+
+    return proyectos.filter((proyecto) =>
+
+        proyecto.titulo
+            .toLowerCase()
+            .includes(texto.toLowerCase())
+    )
+}
+
+export default {
+
+    obtenerProyectos,
+
+    agregarProyecto,
+
+    eliminarProyecto,
+
+    buscarProyecto
+}
