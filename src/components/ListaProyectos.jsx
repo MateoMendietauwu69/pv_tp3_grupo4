@@ -17,7 +17,7 @@ function ListaPro() {
 
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null)
 
-    const [ultimaModificacion, setUltimaModificacion] = useState(null)
+    const [ultimaModificacion, setUltimaModificacion] = useState('')
 
     // useEffect: se ejecuta cada vez que cambia el array de proyectos
     useEffect(() => {
