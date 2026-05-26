@@ -5,6 +5,7 @@ let proyectos = [
         titulo: "Proyecto 1", 
         categoria: "Gaming", 
         estado: "En curso",
+        disponible: true,
 
         descripcion:
             "Proyecto enfocado en el desarrollo de una plataforma gaming interactiva para jugadores online.",
@@ -34,6 +35,7 @@ let proyectos = [
         titulo: "Proyecto 2", 
         categoria: "Educación", 
         estado: "Completado",
+        disponible: true,
 
         descripcion:
             "Sistema educativo pensado para mejorar el aprendizaje virtual en escuelas secundarias.",
@@ -63,6 +65,7 @@ let proyectos = [
         titulo: "Proyecto 3", 
         categoria: "Agricultura", 
         estado: "Pendiente",
+        disponible: true,
 
         descripcion:
             "Aplicación destinada al monitoreo de cultivos y administración agrícola inteligente.",
@@ -92,6 +95,7 @@ let proyectos = [
         titulo: "Proyecto 4", 
         categoria: "Economia", 
         estado: "En curso",
+        disponible: true,
 
         descripcion:
             "Sistema de gestión económica para controlar gastos, ingresos y estadísticas financieras.",
@@ -121,6 +125,7 @@ let proyectos = [
         titulo: "Proyecto 5", 
         categoria: "Comida", 
         estado: "Pendiente",
+        disponible: true,
 
         descripcion:
             "Aplicación para pedidos de comida online con seguimiento en tiempo real y pagos digitales.",
@@ -151,20 +156,27 @@ const obtenerProyectos = () => {
     return [...proyectos]
 }
 
+const obtenerProyectosDisponibles = () => {
+
+    return obtenerProyectos().filter(
+        proyecto => proyecto.disponible === true
+    )
+}
+
 const agregarProyecto = (nuevoProyecto) => {
 
-    proyectos.push(nuevoProyecto)
+    proyectos.push({ ...nuevoProyecto, disponible: true })
 }
 
 const eliminarProyecto = (id) => {
 
-    const index = proyectos.findIndex(
+    const proyecto = proyectos.find(
         proyecto => proyecto.id === id
     )
 
-    if (index !== -1) {
+    if (proyecto) {
 
-        proyectos.splice(index, 1)
+        proyecto.disponible = false
     }
 }
 
@@ -181,6 +193,8 @@ const buscarProyecto = (texto) => {
 export default {
 
     obtenerProyectos,
+
+    obtenerProyectosDisponibles,
 
     agregarProyecto,
 

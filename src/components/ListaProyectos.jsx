@@ -1,20 +1,28 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import proyectoService from '../services/proyectoService.js'
 import FormularioProyecto from './FormularioProyecto.jsx'
 import ProyectoCard from './ProyectoCard.jsx'
 import DetalleProyecto from './DetalleProyecto.jsx'
+import RegistroActividad from './RegistroActividad.jsx'
 
 import '../css/ListaProyectos.css'
 
 function ListaPro() {
 
     const [proyectos, setProyectos] = useState(
-        proyectoService.obtenerProyectos()
+        proyectoService.obtenerProyectosDisponibles()
     )
 
     const [busqueda, setBusqueda] = useState('')
 
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null)
+
+    const [ultimaModificacion, setUltimaModificacion] = useState(null)
+
+    // useEffect: se ejecuta cada vez que cambia el array de proyectos
+    useEffect(() => {
+        setUltimaModificacion(new Date().toLocaleString())
+    }, [proyectos])
 
     // Agregar proyecto
     const handleAgregar = (nuevoProyecto) => {
@@ -22,7 +30,7 @@ function ListaPro() {
         proyectoService.agregarProyecto(nuevoProyecto)
 
         setProyectos(
-            proyectoService.obtenerProyectos()
+            proyectoService.obtenerProyectosDisponibles()
         )
     }
 
@@ -32,7 +40,7 @@ function ListaPro() {
         proyectoService.eliminarProyecto(id)
 
         setProyectos(
-            proyectoService.obtenerProyectos()
+            proyectoService.obtenerProyectosDisponibles()
         )
     }
 
@@ -44,7 +52,7 @@ function ListaPro() {
         if (texto.trim() === '') {
 
             setProyectos(
-                proyectoService.obtenerProyectos()
+                proyectoService.obtenerProyectosDisponibles()
             )
 
         } else {
@@ -90,6 +98,10 @@ function ListaPro() {
 
                 <DetalleProyecto
                     proyecto={proyectoSeleccionado}
+                />
+
+                <RegistroActividad
+                    ultimaModificacion={ultimaModificacion}
                 />
 
             </div>
