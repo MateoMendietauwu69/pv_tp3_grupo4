@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import proyectoService from '../services/proyectoService.js'
 import FormularioProyecto from './FormularioProyecto.jsx'
 import ProyectoCard from './ProyectoCard.jsx'
@@ -19,10 +19,16 @@ function ListaPro() {
 
     const [ultimaModificacion, setUltimaModificacion] = useState('')
 
+    const [contadorCambios, setContadorCambios] = useState(0)
+
     // useEffect: se ejecuta cada vez que cambia el array de proyectos
     useEffect(() => {
+       if (contadorCambios === 0)
+        {
+        return
+        }
         setUltimaModificacion(new Date().toLocaleString())
-    }, [proyectos])
+    },[contadorCambios])
 
     // Agregar proyecto
     const handleAgregar = (nuevoProyecto) => {
@@ -32,6 +38,7 @@ function ListaPro() {
         setProyectos(
             proyectoService.obtenerProyectosDisponibles()
         )
+        setContadorCambios(prev => prev + 1)
     }
 
     // Eliminar proyecto
@@ -42,6 +49,7 @@ function ListaPro() {
         setProyectos(
             proyectoService.obtenerProyectosDisponibles()
         )
+        setContadorCambios(prev => prev + 1)
     }
 
     // Buscar proyecto
