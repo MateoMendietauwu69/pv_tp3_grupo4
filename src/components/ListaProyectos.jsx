@@ -10,7 +10,7 @@ import '../css/ListaProyectos.css'
 function ListaPro() {
 
     const [proyectos, setProyectos] = useState(
-        proyectoService.obtenerProyectos()
+        proyectoService.obtenerProyectosDisponibles()
     )
 
     const [busqueda, setBusqueda] = useState('')
@@ -30,7 +30,7 @@ function ListaPro() {
         proyectoService.agregarProyecto(nuevoProyecto)
 
         setProyectos(
-            proyectoService.obtenerProyectos()
+            proyectoService.obtenerProyectosDisponibles()
         )
     }
 
@@ -40,7 +40,7 @@ function ListaPro() {
         proyectoService.eliminarProyecto(id)
 
         setProyectos(
-            proyectoService.obtenerProyectos()
+            proyectoService.obtenerProyectosDisponibles()
         )
     }
 
@@ -52,7 +52,7 @@ function ListaPro() {
         if (texto.trim() === '') {
 
             setProyectos(
-                proyectoService.obtenerProyectos()
+                proyectoService.obtenerProyectosDisponibles()
             )
 
         } else {
