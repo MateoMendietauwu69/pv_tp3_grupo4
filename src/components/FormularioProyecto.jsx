@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../css/FormularioProyecto.css";
 
+
 function FormularioProyecto({ onAgregar }) {
 
   const [formulario, setFormulario] = useState({
@@ -30,14 +31,13 @@ function FormularioProyecto({ onAgregar }) {
   } = formulario;
 
   const handleChange = (e) => {
-
     const { name, value } = e.target;
-
     setFormulario({
       ...formulario,
       [name]: value,
     });
   };
+
 
   const handleSubmit = (e) => {
 
@@ -88,7 +88,6 @@ function FormularioProyecto({ onAgregar }) {
   };
 
   return (
-
     <div className="formulario-container">
 
       <h3>Agregar Proyecto</h3>
