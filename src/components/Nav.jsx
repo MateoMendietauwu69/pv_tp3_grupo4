@@ -1,18 +1,35 @@
-import '../css/Nav.css'
-function Nav() {
+import { NavLink } from 'react-router-dom'
+import '../css/Nav.css' 
 
-    return(
-        <>
-            <nav>
-                <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Detalles</a></li>
-                    <li><a href="#">Perfiles</a></li>
-                    <li><a href="#">Modificar Proyectos</a></li>
-                </ul>
-            </nav>
-        </>
-    )
+export default function Nav() {
+  return (
+    <nav className="nav-bar">
+      <ul style={{ display: 'flex', gap: '15px', listStyle: 'none', justifyContent: 'center' }}>
+        <li>
+          <NavLink 
+            to="/dashboard" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            Inicio
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/proyectos" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            Detalles / Proyectos
+          </NavLink>
+        </li>
+        <li>
+          <NavLink 
+            to="/perfil" 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+          >
+            Perfiles
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  )
 }
-
-export default Nav
