@@ -4,7 +4,7 @@ function Footer() {
     return(
         <>
             <div>
-                <h2>GRACIAS POR VISITARNOS</h2>
+                <h2 id='footer'>GRACIAS POR VISITARNOS</h2>
             </div>
         </>
     )
