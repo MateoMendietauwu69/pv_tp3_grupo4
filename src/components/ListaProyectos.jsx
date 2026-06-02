@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import proyectoService from '../services/proyectoService.js'
 import FormularioProyecto from './FormularioProyecto.jsx'
 import ProyectoCard from './ProyectoCard.jsx'
-import DetalleProyecto from './DetalleProyecto.jsx'
+import DetalleProyecto from '../views/DetalleProyecto.jsx'
 import RegistroActividad from './RegistroActividad.jsx'
 
 import '../css/ListaProyectos.css'
