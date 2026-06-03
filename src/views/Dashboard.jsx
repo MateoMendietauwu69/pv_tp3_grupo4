@@ -1,3 +1,4 @@
+import '../css/Dashboard.css' 
 import {
   Container,
   Typography,
@@ -18,23 +19,17 @@ function Dashboard() {
     <Container sx={{ mt: 4 }}>
 
       <Typography
-        variant="h3"
+        variant="h4"
         gutterBottom
-      >
-        Dashboard
-      </Typography>
-
-      <Typography
-        variant="body1"
-        sx={{ mb: 4 }}
+        id='title'
       >
         Bienvenido al sistema de gestión de proyectos.
       </Typography>
 
-      <Grid container spacing={3}>
+      <Grid container spacing={3} id='proy'>
 
         <Grid item xs={12} md={3}>
-          <Card>
+          <Card className='card'>
             <CardContent>
               <Typography variant="h6">
                 Total de proyectos
@@ -48,7 +43,7 @@ function Dashboard() {
         </Grid>
 
         <Grid item xs={12} md={3}>
-          <Card>
+          <Card className='card'>
             <CardContent>
               <Typography variant="h6">
                 En curso
@@ -62,7 +57,7 @@ function Dashboard() {
         </Grid>
 
         <Grid item xs={12} md={3}>
-          <Card>
+          <Card className='card'>
             <CardContent>
               <Typography variant="h6">
                 Completados
@@ -76,7 +71,7 @@ function Dashboard() {
         </Grid>
 
         <Grid item xs={12} md={3}>
-          <Card>
+          <Card className='card'>
             <CardContent>
               <Typography variant="h6">
                 Pendientes

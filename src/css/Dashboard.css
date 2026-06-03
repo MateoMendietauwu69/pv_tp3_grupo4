@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Asimovian&family=Bangers&display=swap");
+
+#title {
+    font-family: 'Asimovian', sans-serif;
+}
+
+#proy {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    gap: 20px;
+}
+
+.card{
+    background: rgba(148, 14, 225, 0.5);
+    color:white;
+    border-radius: 10px;
+    outline: 3px solid rgba(192, 105, 243, 0.5);
+}
+
+.card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0);
+}

@@ -23,7 +23,7 @@ nav ul li a {
     position: relative;
 }
 
-nav ul li a:hover {
+nav ul li a:not(.active):hover {
     box-shadow: 0 8px 0 #650A99, 0 6px 25px #C166F5;
 }
 

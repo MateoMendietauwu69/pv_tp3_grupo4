@@ -25,7 +25,7 @@ export default function Nav() {
           <NavLink 
             to="/perfil" 
             className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
-          >
+           >
             Perfiles
           </NavLink>
         </li>
