@@ -1,204 +1,194 @@
 let proyectos = [
+  {
+    id: 1,
+    titulo: "Proyecto 1",
+    categoria: "Gaming",
+    estado: "En curso",
+    disponible: true,
 
-    { 
-        id: 1, 
-        titulo: "Proyecto 1", 
-        categoria: "Gaming", 
-        estado: "En curso",
-        disponible: true,
+    descripcion:
+      "Proyecto enfocado en el desarrollo de una plataforma gaming interactiva para jugadores online.",
 
-        descripcion:
-            "Proyecto enfocado en el desarrollo de una plataforma gaming interactiva para jugadores online.",
+    fecha: "2026-05-20",
 
-        fecha: "2026-05-20",
-
-        recursos: {
-            pdf: "manual_gaming.pdf",
-            drive: "https://drive.google.com/gaming",
-            github: "https://github.com/gaming-project"
-        },
-
-        equipo: [
-            {
-                nombre: "Juan",
-                rol: "Frontend"
-            },
-            {
-                nombre: "Lucia",
-                rol: "Backend"
-            }
-        ]
+    recursos: {
+      pdf: "manual_gaming.pdf",
+      drive: "https://drive.google.com/gaming",
+      github: "https://github.com/gaming-project",
     },
 
-    { 
-        id: 2, 
-        titulo: "Proyecto 2", 
-        categoria: "Educación", 
-        estado: "Completado",
-        disponible: true,
+    equipo: [
+      {
+        nombre: "Juan",
+        rol: "Frontend",
+      },
+      {
+        nombre: "Lucia",
+        rol: "Backend",
+      },
+    ],
+  },
 
-        descripcion:
-            "Sistema educativo pensado para mejorar el aprendizaje virtual en escuelas secundarias.",
+  {
+    id: 2,
+    titulo: "Proyecto 2",
+    categoria: "Educación",
+    estado: "Completado",
+    disponible: true,
 
-        fecha: "2026-05-18",
+    descripcion:
+      "Sistema educativo pensado para mejorar el aprendizaje virtual en escuelas secundarias.",
 
-        recursos: {
-            pdf: "manual_educacion.pdf",
-            drive: "https://drive.google.com/educacion",
-            github: "https://github.com/educacion-project"
-        },
+    fecha: "2026-05-18",
 
-        equipo: [
-            {
-                nombre: "Ana",
-                rol: "Diseñadora UX/UI"
-            },
-            {
-                nombre: "Pedro",
-                rol: "Frontend"
-            }
-        ]
+    recursos: {
+      pdf: "manual_educacion.pdf",
+      drive: "https://drive.google.com/educacion",
+      github: "https://github.com/educacion-project",
     },
 
-    { 
-        id: 3, 
-        titulo: "Proyecto 3", 
-        categoria: "Agricultura", 
-        estado: "Pendiente",
-        disponible: true,
+    equipo: [
+      {
+        nombre: "Ana",
+        rol: "Diseñadora UX/UI",
+      },
+      {
+        nombre: "Pedro",
+        rol: "Frontend",
+      },
+    ],
+  },
 
-        descripcion:
-            "Aplicación destinada al monitoreo de cultivos y administración agrícola inteligente.",
+  {
+    id: 3,
+    titulo: "Proyecto 3",
+    categoria: "Agricultura",
+    estado: "Pendiente",
+    disponible: true,
 
-        fecha: "2026-05-25",
+    descripcion:
+      "Aplicación destinada al monitoreo de cultivos y administración agrícola inteligente.",
 
-        recursos: {
-            pdf: "manual_agricultura.pdf",
-            drive: "https://drive.google.com/agricultura",
-            github: "https://github.com/agricultura-project"
-        },
+    fecha: "2026-05-25",
 
-        equipo: [
-            {
-                nombre: "Marcos",
-                rol: "Analista de Datos"
-            },
-            {
-                nombre: "Sofia",
-                rol: "Backend"
-            }
-        ]
+    recursos: {
+      pdf: "manual_agricultura.pdf",
+      drive: "https://drive.google.com/agricultura",
+      github: "https://github.com/agricultura-project",
     },
 
-    { 
-        id: 4, 
-        titulo: "Proyecto 4", 
-        categoria: "Economia", 
-        estado: "En curso",
-        disponible: true,
+    equipo: [
+      {
+        nombre: "Marcos",
+        rol: "Analista de Datos",
+      },
+      {
+        nombre: "Sofia",
+        rol: "Backend",
+      },
+    ],
+  },
 
-        descripcion:
-            "Sistema de gestión económica para controlar gastos, ingresos y estadísticas financieras.",
+  {
+    id: 4,
+    titulo: "Proyecto 4",
+    categoria: "Economia",
+    estado: "En curso",
+    disponible: true,
 
-        fecha: "2026-05-27",
+    descripcion:
+      "Sistema de gestión económica para controlar gastos, ingresos y estadísticas financieras.",
 
-        recursos: {
-            pdf: "manual_economia.pdf",
-            drive: "https://drive.google.com/economia",
-            github: "https://github.com/economia-project"
-        },
+    fecha: "2026-05-27",
 
-        equipo: [
-            {
-                nombre: "Carlos",
-                rol: "Backend"
-            },
-            {
-                nombre: "Valentina",
-                rol: "Frontend"
-            }
-        ]
+    recursos: {
+      pdf: "manual_economia.pdf",
+      drive: "https://drive.google.com/economia",
+      github: "https://github.com/economia-project",
     },
 
-    { 
-        id: 5, 
-        titulo: "Proyecto 5", 
-        categoria: "Comida", 
-        estado: "Pendiente",
-        disponible: true,
+    equipo: [
+      {
+        nombre: "Carlos",
+        rol: "Backend",
+      },
+      {
+        nombre: "Valentina",
+        rol: "Frontend",
+      },
+    ],
+  },
 
-        descripcion:
-            "Aplicación para pedidos de comida online con seguimiento en tiempo real y pagos digitales.",
+  {
+    id: 5,
+    titulo: "Proyecto 5",
+    categoria: "Comida",
+    estado: "Pendiente",
+    disponible: true,
 
-        fecha: "2026-05-30",
+    descripcion:
+      "Aplicación para pedidos de comida online con seguimiento en tiempo real y pagos digitales.",
 
-        recursos: {
-            pdf: "manual_comida.pdf",
-            drive: "https://drive.google.com/comida",
-            github: "https://github.com/comida-project"
-        },
+    fecha: "2026-05-30",
 
-        equipo: [
-            {
-                nombre: "Matias",
-                rol: "Frontend"
-            },
-            {
-                nombre: "Camila",
-                rol: "Tester QA"
-            }
-        ]
-    }
+    recursos: {
+      pdf: "manual_comida.pdf",
+      drive: "https://drive.google.com/comida",
+      github: "https://github.com/comida-project",
+    },
 
+    equipo: [
+      {
+        nombre: "Matias",
+        rol: "Frontend",
+      },
+      {
+        nombre: "Camila",
+        rol: "Tester QA",
+      },
+    ],
+  },
 ];
-const obtenerProyectos = () => {
+const obtenerPorId = (id) => {
+  return proyectos.find((proyecto) => proyecto.id === parseInt(id));
+};
 
-    return [...proyectos]
-}
+const obtenerProyectos = () => {
+  return [...proyectos];
+};
 
 const obtenerProyectosDisponibles = () => {
-
-    return obtenerProyectos().filter(
-        proyecto => proyecto.disponible === true
-    )
-}
+  return obtenerProyectos().filter((proyecto) => proyecto.disponible === true);
+};
 
 const agregarProyecto = (nuevoProyecto) => {
-
-    proyectos.push({ ...nuevoProyecto, disponible: true })
-}
+  proyectos.push({ ...nuevoProyecto, disponible: true });
+};
 
 const eliminarProyecto = (id) => {
+  const proyecto = proyectos.find((proyecto) => proyecto.id === id);
 
-    const proyecto = proyectos.find(
-        proyecto => proyecto.id === id
-    )
-
-    if (proyecto) {
-
-        proyecto.disponible = false
-    }
-}
+  if (proyecto) {
+    proyecto.disponible = false;
+  }
+};
 
 const buscarProyecto = (texto) => {
-
-    return proyectos.filter((proyecto) =>
-
-        proyecto.titulo
-            .toLowerCase()
-            .includes(texto.toLowerCase())
-    )
-}
+  return proyectos.filter((proyecto) =>
+    proyecto.titulo.toLowerCase().includes(texto.toLowerCase()),
+  );
+};
 
 export default {
+  obtenerPorId,
 
-    obtenerProyectos,
+  obtenerProyectos,
 
-    obtenerProyectosDisponibles,
+  obtenerProyectosDisponibles,
 
-    agregarProyecto,
+  agregarProyecto,
 
-    eliminarProyecto,
+  eliminarProyecto,
 
-    buscarProyecto
-}
+  buscarProyecto,
+};

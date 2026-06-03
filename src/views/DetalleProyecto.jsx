@@ -1,4 +1,10 @@
-const DetalleProyecto = ({ proyecto }) => {
+import { useParams } from 'react-router-dom'
+import proyectoService from '../services/proyectoService'
+
+const DetalleProyecto = () => {
+
+    const { id } = useParams()
+    const proyecto = proyectoService.obtenerPorId(id)
 
     if (!proyecto) {
 

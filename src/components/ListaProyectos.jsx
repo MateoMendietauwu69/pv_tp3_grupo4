@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import proyectoService from '../services/proyectoService.js'
 import FormularioProyecto from './FormularioProyecto.jsx'
 import ProyectoCard from './ProyectoCard.jsx'
-import DetalleProyecto from '../views/DetalleProyecto.jsx'
 import RegistroActividad from './RegistroActividad.jsx'
 
 import '../css/ListaProyectos.css'
@@ -15,7 +14,6 @@ function ListaPro() {
 
     const [busqueda, setBusqueda] = useState('')
 
-    const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null)
 
     const [ultimaModificacion, setUltimaModificacion] = useState('')
 
@@ -97,16 +95,12 @@ function ListaPro() {
                             key={proyecto.id}
                             proyecto={proyecto}
                             onEliminar={handleEliminar}
-                            onSeleccionar={setProyectoSeleccionado}
                         />
 
                     ))}
 
                 </ul>
 
-                <DetalleProyecto
-                    proyecto={proyectoSeleccionado}
-                />
 
                 <RegistroActividad
                     ultimaModificacion={ultimaModificacion}

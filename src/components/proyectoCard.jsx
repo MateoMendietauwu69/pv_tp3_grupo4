@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom'
+
 const ProyectoCard = ({
     proyecto,
-    onEliminar,
-    onSeleccionar
+    onEliminar
 }) => {
 
     const {
@@ -28,12 +29,12 @@ const ProyectoCard = ({
                     Eliminar
                 </button>
 
-                <button
+                <Link
                     className='boton'
-                    onClick={() => onSeleccionar(proyecto)}
+                    to={`/proyectos/${id}`}
                 >
                     Ver detalle
-                </button>
+                </Link>
 
             </div>
 
