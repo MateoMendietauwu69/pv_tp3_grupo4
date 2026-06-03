@@ -1,8 +1,11 @@
 import { useState } from "react";
 import "../css/FormularioProyecto.css";
 
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+
 function FormularioProyecto({ onAgregar }) {
-  // Estado único con todos los campos del formulario (desestructuración)
   const [formulario, setFormulario] = useState({
     titulo: "",
     categoria: "",
@@ -11,21 +14,20 @@ function FormularioProyecto({ onAgregar }) {
     fecha: "",
   });
 
-  // Desestructuración del estado para acceder a cada campo
   const { titulo, categoria, estado, descripcion, fecha } = formulario;
 
-  // handleChange genérico: actualiza cualquier campo del formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormulario({
       ...formulario,
       [name]: value,
     });
   };
 
-  // Manejo del envío del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (titulo.trim() === "" || categoria.trim() === "") return;
 
     const nuevoProyecto = {
@@ -39,7 +41,6 @@ function FormularioProyecto({ onAgregar }) {
 
     onAgregar(nuevoProyecto);
 
-    // Resetear formulario
     setFormulario({
       titulo: "",
       categoria: "",
@@ -52,35 +53,68 @@ function FormularioProyecto({ onAgregar }) {
   return (
     <div className="formulario-container">
       <h3>Agregar Proyecto</h3>
+
       <form onSubmit={handleSubmit}>
-        <input 
-          type="text"
+        <TextField
+          fullWidth
+          margin="normal"
+          label="Título del proyecto"
           name="titulo"
-          placeholder="Título del proyecto"
           value={titulo}
           onChange={handleChange}
         />
-        <input
-          type="text"
+
+        <TextField
+          fullWidth
+          margin="normal"
+          label="Categoría"
           name="categoria"
-          placeholder="Categoría"
           value={categoria}
           onChange={handleChange}
         />
-        <select name="estado" value={estado} onChange={handleChange}>
-          <option value="Pendiente">Pendiente</option>
-          <option value="En curso">En curso</option>
-          <option value="Completado">Completado</option>
-        </select>
-        <input 
-          type="text"
+
+        <TextField
+          select
+          fullWidth
+          margin="normal"
+          label="Estado"
+          name="estado"
+          value={estado}
+          onChange={handleChange}
+        >
+          <MenuItem value="Pendiente">Pendiente</MenuItem>
+          <MenuItem value="En curso">En curso</MenuItem>
+          <MenuItem value="Completado">Completado</MenuItem>
+        </TextField>
+
+        <TextField
+          fullWidth
+          margin="normal"
+          label="Descripción del proyecto"
           name="descripcion"
-          placeholder="Descripción del proyecto"
           value={descripcion}
           onChange={handleChange}
         />
-        <input type="date" name="fecha" value={fecha} onChange={handleChange} />
-        <button type="submit">Agregar</button>
+
+        <TextField
+          fullWidth
+          margin="normal"
+          type="date"
+          name="fecha"
+          value={fecha}
+          onChange={handleChange}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{ marginTop: "15px" }}
+        >
+          Agregar
+        </Button>
       </form>
     </div>
   );
