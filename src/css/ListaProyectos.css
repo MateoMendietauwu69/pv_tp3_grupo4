@@ -33,6 +33,10 @@ ul {
   padding: 15px;
 }
 
+#Proyectos:hover{
+  transform: translateX(10px);
+}
+
 .boton {
   font-family: "Asimovian", sans-serif;
   background-color: #940ee1;
