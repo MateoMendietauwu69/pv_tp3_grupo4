@@ -1,77 +1,70 @@
-import { useParams } from 'react-router-dom'
-import proyectoService from '../services/proyectoService'
+import { useParams } from "react-router-dom";
+import proyectoService from "../services/proyectoService";
 
-const DetalleProyecto = () => {
+const DetalleProyecto = ({ idProp, onVolver }) => {
+  const { id: paramId } = useParams();
+  const id = idProp || paramId;
+  const proyecto = proyectoService.obtenerPorId(id);
 
-    const { id } = useParams()
-    const proyecto = proyectoService.obtenerPorId(id)
+  if (!proyecto) {
+    return <h2>No hay proyecto seleccionado</h2>;
+  }
 
-    if (!proyecto) {
+  return (
+    <div className="detalle-proyecto">
+      {onVolver && (
+        <button
+          className="boton"
+          onClick={onVolver}
+          style={{ marginBottom: "15px" }}
+        >
+          Volver a la lista
+        </button>
+      )}
 
-        return (
-            <h2>No hay proyecto seleccionado</h2>
-        )
-    }
+      <h2>{proyecto.titulo}</h2>
 
-    return (
+      <p>
+        <strong>Categoría:</strong> {proyecto.categoria}
+      </p>
 
-        <div className="detalle-proyecto">
+      <p>
+        <strong>Estado:</strong> {proyecto.estado}
+      </p>
 
-            <h2>{proyecto.titulo}</h2>
+      <p>
+        <strong>Descripción:</strong> {proyecto.descripcion}
+      </p>
 
-            <p>
-                <strong>Categoría:</strong> {proyecto.categoria}
-            </p>
+      <p>
+        <strong>Fecha:</strong> {proyecto.fecha}
+      </p>
 
-            <p>
-                <strong>Estado:</strong> {proyecto.estado}
-            </p>
+      <h3>Recursos</h3>
 
-            <p>
-                <strong>Descripción:</strong> {proyecto.descripcion}
-            </p>
+      <ul>
+        <li>PDF: {proyecto.recursos?.pdf}</li>
 
-            <p>
-                <strong>Fecha:</strong> {proyecto.fecha}
-            </p>
+        <li>Drive: {proyecto.recursos?.drive}</li>
 
-            <h3>Recursos</h3>
+        <li>GitHub: {proyecto.recursos?.github}</li>
+      </ul>
 
-            <ul>
-                <li>
-                    PDF: {proyecto.recursos?.pdf}
-                </li>
+      <h3>Equipo</h3>
 
-                <li>
-                    Drive: {proyecto.recursos?.drive}
-                </li>
+      {proyecto.equipo?.map((miembro, index) => (
+        <div key={index}>
+          <p>
+            <strong>Nombre:</strong> {miembro.nombre}
+          </p>
 
-                <li>
-                    GitHub: {proyecto.recursos?.github}
-                </li>
-            </ul>
-
-            <h3>Equipo</h3>
-
-            {
-                proyecto.equipo?.map((miembro, index) => (
-
-                    <div key={index}>
-
-                        <p>
-                            <strong>Nombre:</strong> {miembro.nombre}
-                        </p>
-
-                        <p>
-                            <strong>Rol:</strong> {miembro.rol}
-                        </p>
-
-                    </div>
-                ))
-            }
-
+          <p>
+            <strong>Rol:</strong> {miembro.rol}
+          </p>
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
-export default DetalleProyecto
+export default DetalleProyecto;

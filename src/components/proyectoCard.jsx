@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom'
-
 const ProyectoCard = ({
     proyecto,
-    onEliminar
+    onEliminar,
+    onVerDetalle
 }) => {
 
     const {
@@ -29,12 +28,12 @@ const ProyectoCard = ({
                     Eliminar
                 </button>
 
-                <Link
+                <button
                     className='boton'
-                    to={`/proyectos/${id}`}
+                    onClick={() => onVerDetalle(id)}
                 >
                     Ver detalle
-                </Link>
+                </button>
 
             </div>
 
