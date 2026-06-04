@@ -19,7 +19,7 @@ nav ul li a {
     font-weight: bold;
     border-radius: 30px;
     box-shadow: 0 8px 0 #650A99; 
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
     position: relative;
 }
 
@@ -27,7 +27,7 @@ nav ul li a:not(.active):hover {
     box-shadow: 0 8px 0 #650A99, 0 6px 25px #C166F5;
 }
 
-nav ul li a:active, .active {
+nav ul li a:not(.active):active, .active{
     transform: translateY(4px);
     box-shadow: 0 2px 0 #48076E, 0 0 20px #C166F5, 0 0 30px #C166F5;
     background-color: #810DC5;

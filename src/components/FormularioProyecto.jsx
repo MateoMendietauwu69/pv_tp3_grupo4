@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../css/FormularioProyecto.css'
 
 import {
   Box,
@@ -97,7 +98,7 @@ const FormularioProyecto = ({ onAgregar }) => {
 
   return (
 
-    <Paper
+    <Paper id='form'
       elevation={3}
       sx={{
         p: 3,
@@ -109,6 +110,7 @@ const FormularioProyecto = ({ onAgregar }) => {
       <Typography
         variant="h5"
         gutterBottom
+         className='text'
       >
         Agregar Proyecto
       </Typography>
@@ -124,6 +126,7 @@ const FormularioProyecto = ({ onAgregar }) => {
       >
 
         <TextField
+          className="casilla"
           label="Título del proyecto"
           name="titulo"
           value={titulo}
@@ -169,7 +172,6 @@ const FormularioProyecto = ({ onAgregar }) => {
           value={descripcion}
           onChange={handleChange}
           multiline
-          rows={3}
           fullWidth
         />
 
@@ -184,6 +186,10 @@ const FormularioProyecto = ({ onAgregar }) => {
           }}
           fullWidth
         />
+
+        <Typography variant="h6"  className='text'>
+          Links
+        </Typography>
 
         <TextField
           label="Link PDF"
@@ -209,7 +215,7 @@ const FormularioProyecto = ({ onAgregar }) => {
           fullWidth
         />
 
-        <Typography variant="h6">
+        <Typography variant="h6" className='text'>
           Integrante
         </Typography>
 

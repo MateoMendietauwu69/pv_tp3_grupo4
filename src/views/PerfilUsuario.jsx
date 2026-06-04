@@ -1,3 +1,5 @@
+import '../css/PerfilUsuarios.css' 
+
 import {
   Container,
   Typography,
@@ -14,7 +16,7 @@ function PerfilUsuario() {
     <Container sx={{ mt:4 }}>
       <Typography variant="h3" gutterBottom>Alumnos</Typography>
       <Typography variant="body1" gutterBottom>Lista de participantes del TP3</Typography>
-      <Paper elevation={3} sx={{ mt: 3 }}>
+      <Paper elevation={3} sx={{ mt: 3 }} className='lista'>
         <List>
           <ListItem>
             <ListItemText
@@ -36,7 +38,7 @@ function PerfilUsuario() {
           </ListItem>
         </List>
       </Paper>
-      <Paper elevation={3} sx={{ mt: 3 }}>
+      <Paper elevation={3} sx={{ mt: 3 }} className='lista'>
         <List>
           <ListItem>
             <ListItemText
@@ -58,7 +60,7 @@ function PerfilUsuario() {
           </ListItem>
         </List>
       </Paper>
-      <Paper elevation={3} sx={{ mt: 3 }}>
+      <Paper elevation={3} sx={{ mt: 3 }} className='lista'>
         <List>
           <ListItem>
             <ListItemText
@@ -80,7 +82,7 @@ function PerfilUsuario() {
           </ListItem>
         </List>
       </Paper>
-      <Paper elevation={3} sx={{ mt: 3 }}>
+      <Paper elevation={3} sx={{ mt: 3 }} className='lista'>
         <List>
           <ListItem>
             <ListItemText
@@ -102,7 +104,7 @@ function PerfilUsuario() {
           </ListItem>
         </List>
       </Paper>
-      <Paper elevation={3} sx={{ mt: 3 }}>
+      <Paper elevation={3} sx={{ mt: 3 }} className='lista'>
         <List>
           <ListItem>
             <ListItemText
@@ -124,7 +126,7 @@ function PerfilUsuario() {
           </ListItem>
         </List>
       </Paper>
-      <Paper elevation={3} sx={{ mt: 3 }}>
+      <Paper elevation={3} sx={{ mt: 3 }} className='lista'>
         <List>
           <ListItem>
             <ListItemText
