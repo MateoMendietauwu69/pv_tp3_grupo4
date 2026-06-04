@@ -3,6 +3,7 @@ import proyectoService from '../services/proyectoService.js'
 import FormularioProyecto from './FormularioProyecto.jsx'
 import ProyectoCard from './ProyectoCard.jsx'
 import RegistroActividad from './RegistroActividad.jsx'
+import DetalleProyecto from '../views/DetalleProyecto.jsx'
 
 import '../css/ListaProyectos.css'
 
@@ -14,6 +15,7 @@ function ListaPro() {
 
     const [busqueda, setBusqueda] = useState('')
 
+    const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null)
 
     const [ultimaModificacion, setUltimaModificacion] = useState('')
 
@@ -95,12 +97,21 @@ function ListaPro() {
                             key={proyecto.id}
                             proyecto={proyecto}
                             onEliminar={handleEliminar}
+                            onVerDetalle={(id) => setProyectoSeleccionado(id)}
                         />
 
                     ))}
 
                 </ul>
 
+                {proyectoSeleccionado && (
+                    <div ref={(el) => el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
+                        <DetalleProyecto 
+                            idProp={proyectoSeleccionado} 
+                            onVolver={() => setProyectoSeleccionado(null)} 
+                        />
+                    </div>
+                )}
 
                 <RegistroActividad
                     ultimaModificacion={ultimaModificacion}
