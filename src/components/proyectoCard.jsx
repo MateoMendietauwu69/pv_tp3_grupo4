@@ -1,7 +1,7 @@
 const ProyectoCard = ({
     proyecto,
     onEliminar,
-    onSeleccionar
+    onVerDetalle
 }) => {
 
     const {
@@ -30,7 +30,7 @@ const ProyectoCard = ({
 
                 <button
                     className='boton'
-                    onClick={() => onSeleccionar(proyecto)}
+                    onClick={() => onVerDetalle(id)}
                 >
                     Ver detalle
                 </button>

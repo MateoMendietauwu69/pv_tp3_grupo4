@@ -12,9 +12,9 @@
 }
 
 .card{
-    background: rgba(148, 14, 225, 0.5);
-    color:white;
-    border-radius: 10px;
+    background-color: rgba(148, 14, 225, 0.5) !important;
+    color:white !important;
+    border-radius: 10px !important;
     outline: 3px solid rgba(192, 105, 243, 0.5);
 }
 

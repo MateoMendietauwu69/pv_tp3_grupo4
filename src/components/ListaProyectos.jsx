@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import proyectoService from '../services/proyectoService.js'
 import FormularioProyecto from './FormularioProyecto.jsx'
 import ProyectoCard from './ProyectoCard.jsx'
-import DetalleProyecto from '../views/DetalleProyecto.jsx'
 import RegistroActividad from './RegistroActividad.jsx'
+import DetalleProyecto from '../views/DetalleProyecto.jsx'
 
 import '../css/ListaProyectos.css'
 
@@ -97,16 +97,21 @@ function ListaPro() {
                             key={proyecto.id}
                             proyecto={proyecto}
                             onEliminar={handleEliminar}
-                            onSeleccionar={setProyectoSeleccionado}
+                            onVerDetalle={(id) => setProyectoSeleccionado(id)}
                         />
 
                     ))}
 
                 </ul>
 
-                <DetalleProyecto
-                    proyecto={proyectoSeleccionado}
-                />
+                {proyectoSeleccionado && (
+                    <div ref={(el) => el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
+                        <DetalleProyecto 
+                            idProp={proyectoSeleccionado} 
+                            onVolver={() => setProyectoSeleccionado(null)} 
+                        />
+                    </div>
+                )}
 
                 <RegistroActividad
                     ultimaModificacion={ultimaModificacion}
