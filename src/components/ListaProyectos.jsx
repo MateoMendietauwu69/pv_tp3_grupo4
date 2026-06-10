@@ -26,7 +26,6 @@ useEffect(() => {
     if (contadorCambios === 0) {
         return;
     }
-    
     setUltimaModificacion(Date.now()); 
 }, [contadorCambios]);
 
