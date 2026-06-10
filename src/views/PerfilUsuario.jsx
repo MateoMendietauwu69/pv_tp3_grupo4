@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 
-function PerfilUsuario() {
+const PerfilUsuario = () => {
 
   return (
     <Container sx={{ mt:4 }}>
