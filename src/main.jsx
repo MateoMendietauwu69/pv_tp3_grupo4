@@ -5,10 +5,14 @@ import { BrowserRouter } from 'react-router-dom' // <- Agregamos el enrutador pa
 import App from './App.jsx' // <- Importamos App que ahora centraliza la estructura y las rutas
 import './css/index.css'
 
+import { UsuarioProvider } from "./context/UsuarioContext"; // <- Importamos el UsuarioProvider
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter> {/* Envolvemos la aplicación con el BrowserRouter */}
-      <App />
-    </BrowserRouter>
+    <UsuarioProvider>
+      <BrowserRouter> {/* Envolvemos la aplicación con el BrowserRouter */}
+        <App />
+      </BrowserRouter>
+    </UsuarioProvider>
   </StrictMode>,
 )
