@@ -1,5 +1,5 @@
 import '../css/Header.css'
-function Header() {
+const Header = () =>{
 
     return (
         <>

@@ -11,7 +11,7 @@ import PerfilUsuario from './views/PerfilUsuario.jsx'
 
 import './css/App.css'
 
-function App() {
+const App = () => {
   return (
     <div className="app-container">
       <Header />
