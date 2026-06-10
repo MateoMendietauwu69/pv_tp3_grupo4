@@ -1,14 +1,11 @@
 import { useContext, useState } from "react";
 import { UsuarioContext } from "../context/UsuarioContext";
-import { Container, Typography, Paper, Grid, Button, TextField } from "@mui/material";
-import '../css/PerfilUsuarios.css';
+import { Container, Typography, Paper, Grid, Button, TextField, Box } from "@mui/material";
 
 const PerfilUsuario = () => {
     const { usuario, actualizarPerfil } = useContext(UsuarioContext);
 
     const [editando, setEditando] = useState(false);
-    
-    // Estado local para los datos actualizados del formulario
     const [datosActualizados, setDatosActualizados] = useState(usuario);
 
     const handleGuardar = () => {
@@ -24,69 +21,114 @@ const PerfilUsuario = () => {
     };
 
     return (
-        <Container sx={{ mt: 4 }}>
-            <Typography variant="h3" gutterBottom>Mi Perfil</Typography>
-            <Paper elevation={3} sx={{ p: 4, mt: 3 }} className="lista">
-                <Grid container spacing={3}>
-                    <Grid item xs={12}>
+        <Container maxWidth="md" sx={{ mt: { xs: 4, md: 8 } }}>
+            <Typography variant="h3" gutterBottom align="center" sx={{ color: 'white', fontWeight: 'bold' }}>
+                Mi Perfil
+            </Typography>
+            
+            <Paper elevation={0} sx={{ 
+                p: { xs: 3, md: 5 }, 
+                mt: 4, 
+                backgroundColor: 'rgba(30, 30, 45, 0.7)', 
+                color: 'white',
+                borderRadius: 4,
+                border: '1px solid rgba(255,255,255,0.05)',
+            }}>
+                <Grid container spacing={4} alignItems="center">
+                    <Grid item xs={12} md={6}>
                         {editando ? (
                             <TextField 
                                 fullWidth 
                                 label="Nombre" 
                                 name="nombre"
+                                variant="filled"
                                 value={datosActualizados.nombre} 
                                 onChange={handleChange} 
+                                InputLabelProps={{ style: { color: '#b0b0b0' } }}
+                                InputProps={{ style: { color: 'white', backgroundColor: 'rgba(255,255,255,0.05)' } }}
                             />
                         ) : (
-                            <Typography variant="h6">Nombre: {usuario.nombre}</Typography>
+                            <Box>
+                                <Typography variant="caption" sx={{ color: '#a0a0b0', textTransform: 'uppercase', letterSpacing: 1 }}>Nombre</Typography>
+                                <Typography variant="h6" sx={{ fontWeight: '500' }}>{usuario.nombre}</Typography>
+                            </Box>
                         )}
                     </Grid>
-                    <Grid item xs={12}>
+                    
+                    <Grid item xs={12} md={6}>
                         {editando ? (
                             <TextField 
                                 fullWidth 
                                 label="DNI" 
                                 name="dni"
+                                variant="filled"
                                 value={datosActualizados.dni} 
                                 onChange={handleChange} 
+                                InputLabelProps={{ style: { color: '#b0b0b0' } }}
+                                InputProps={{ style: { color: 'white', backgroundColor: 'rgba(255,255,255,0.05)' } }}
                             />
                         ) : (
-                            <Typography variant="h6">DNI: {usuario.dni}</Typography>
+                            <Box>
+                                <Typography variant="caption" sx={{ color: '#a0a0b0', textTransform: 'uppercase', letterSpacing: 1 }}>DNI</Typography>
+                                <Typography variant="h6" sx={{ fontWeight: '500' }}>{usuario.dni}</Typography>
+                            </Box>
                         )}
                     </Grid>
-                    <Grid item xs={12}>
+
+                    <Grid item xs={12} md={6}>
                         {editando ? (
                             <TextField 
                                 fullWidth 
                                 label="Rol" 
                                 name="rol"
+                                variant="filled"
                                 value={datosActualizados.rol} 
                                 onChange={handleChange} 
+                                InputLabelProps={{ style: { color: '#b0b0b0' } }}
+                                InputProps={{ style: { color: 'white', backgroundColor: 'rgba(255,255,255,0.05)' } }}
                             />
                         ) : (
-                            <Typography variant="h6">Rol: {usuario.rol}</Typography>
+                            <Box>
+                                <Typography variant="caption" sx={{ color: '#a0a0b0', textTransform: 'uppercase', letterSpacing: 1 }}>Rol</Typography>
+                                <Typography variant="h6" sx={{ fontWeight: '500' }}>{usuario.rol}</Typography>
+                            </Box>
                         )}
                     </Grid>
-                    <Grid item xs={12}>
+
+                    <Grid item xs={12} md={6}>
                         {editando ? (
                             <TextField 
                                 fullWidth 
                                 label="Institución" 
                                 name="institucion"
+                                variant="filled"
                                 value={datosActualizados.institucion} 
                                 onChange={handleChange} 
+                                InputLabelProps={{ style: { color: '#b0b0b0' } }}
+                                InputProps={{ style: { color: 'white', backgroundColor: 'rgba(255,255,255,0.05)' } }}
                             />
                         ) : (
-                            <Typography variant="h6">Institución: {usuario.institucion}</Typography>
+                            <Box>
+                                <Typography variant="caption" sx={{ color: '#a0a0b0', textTransform: 'uppercase', letterSpacing: 1 }}>Institución</Typography>
+                                <Typography variant="h6" sx={{ fontWeight: '500' }}>{usuario.institucion}</Typography>
+                            </Box>
                         )}
                     </Grid>
-                    <Grid item xs={12}>
+
+                    <Grid item xs={12} sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
                         {editando ? (
-                            <Button variant="contained" color="primary" onClick={handleGuardar}>
-                                Guardar
-                            </Button>
+                            <>
+                                <Button variant="text" color="inherit" onClick={() => setEditando(false)}>
+                                    Cancelar
+                                </Button>
+                                <Button variant="contained" color="secondary" onClick={handleGuardar} sx={{ fontWeight: 'bold' }}>
+                                    Guardar Cambios
+                                </Button>
+                            </>
                         ) : (
-                            <Button variant="outlined" color="primary" onClick={() => setEditando(true)}>
+                            <Button variant="outlined" color="primary" onClick={() => setEditando(true)} sx={{
+                                color: '#b388ff', borderColor: '#b388ff', '&:hover': { borderColor: '#7c4dff', backgroundColor: 'rgba(124, 77, 255, 0.1)' }
+                            }}>
                                 Editar Perfil
                             </Button>
                         )}

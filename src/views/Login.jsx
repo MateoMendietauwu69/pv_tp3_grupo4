@@ -22,52 +22,83 @@ const Login = () => {
     };
 
     return (
-        <Container maxWidth="sm" sx={{ mt: 10, display: 'flex', justifyContent: 'center' }}>
-            <Paper elevation={10} sx={{ 
-                p: 5, 
+        <Container maxWidth="xs" sx={{ mt: 12, display: 'flex', justifyContent: 'center' }}>
+            <Paper elevation={24} sx={{ 
+                p: { xs: 4, md: 5 }, 
                 width: '100%', 
-                borderRadius: 3, 
-                backgroundColor: 'rgba(30, 30, 40, 0.95)', 
+                borderRadius: 4, 
+                backgroundColor: 'rgba(20, 20, 35, 0.85)', 
+                backdropFilter: 'blur(10px)',
                 color: 'white',
-                border: '1px solid #4a148c',
-                boxShadow: '0 0 20px rgba(138, 43, 226, 0.4)'
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                boxShadow: '0 8px 32px rgba(98, 0, 234, 0.2)'
             }}>
-                <Typography variant="h4" gutterBottom align="center" sx={{ fontWeight: 'bold', fontFamily: 'monospace', mb: 3 }}>
-                    INICIAR SESIÓN
-                </Typography>
+                <Box sx={{ textAlign: 'center', mb: 4 }}>
+                    <Typography variant="h4" sx={{ 
+                        fontWeight: 'bold', 
+                        fontFamily: 'inherit',
+                        color: 'white',
+                        letterSpacing: '1px'
+                    }}>
+                        BIENVENIDO
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: '#e0e0e0', mt: 1 }}>
+                        Por favor, ingresa tus datos
+                    </Typography>
+                </Box>
 
                 <form onSubmit={handleSubmit}>
-                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3.5 }}>
                         <TextField 
                             label="Nombre" 
-                            variant="outlined" 
+                            variant="filled" 
                             value={nombre} 
                             onChange={(e) => setNombre(e.target.value)} 
                             required 
-                            InputLabelProps={{ style: { color: '#b0b0b0' } }}
+                            InputLabelProps={{ style: { color: '#f5f5f5' } }}
                             InputProps={{ 
-                                style: { color: 'white', borderColor: 'white' },
-                                sx: {
-                                    fieldset: { borderColor: '#5e35b1' },
-                                    '&:hover fieldset': { borderColor: '#7e57c2' },
-                                    '&.Mui-focused fieldset': { borderColor: '#b39ddb' },
+                                disableUnderline: true,
+                                style: { color: 'white', borderRadius: 8, backgroundColor: 'rgba(255, 255, 255, 0.04)' },
+                            }}
+                            sx={{
+                                '& .MuiFilledInput-root': {
+                                    border: '1px solid rgba(255,255,255,0.05)',
+                                    transition: 'all 0.2s',
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                                    },
+                                    '&.Mui-focused': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                                        border: '1px solid #7c4dff',
+                                        boxShadow: '0 0 0 2px rgba(124, 77, 255, 0.2)'
+                                    }
                                 }
                             }}
                         />
                         <TextField 
                             label="DNI" 
-                            variant="outlined" 
+                            variant="filled" 
                             type="password"
                             value={dni} 
                             onChange={(e) => setDni(e.target.value)} 
                             required 
-                            InputLabelProps={{ style: { color: '#b0b0b0' } }}
+                            InputLabelProps={{ style: { color: '#f5f5f5' } }}
                             InputProps={{ 
-                                style: { color: 'white' },
-                                sx: {
-                                    fieldset: { borderColor: '#5e35b1' },
-                                    '&:hover fieldset': { borderColor: '#7e57c2' },
-                                    '&.Mui-focused fieldset': { borderColor: '#b39ddb' },
+                                disableUnderline: true,
+                                style: { color: 'white', borderRadius: 8, backgroundColor: 'rgba(255, 255, 255, 0.04)' },
+                            }}
+                            sx={{
+                                '& .MuiFilledInput-root': {
+                                    border: '1px solid rgba(255,255,255,0.05)',
+                                    transition: 'all 0.2s',
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                                    },
+                                    '&.Mui-focused': {
+                                        backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                                        border: '1px solid #7c4dff',
+                                        boxShadow: '0 0 0 2px rgba(124, 77, 255, 0.2)'
+                                    }
                                 }
                             }}
                         />
@@ -77,15 +108,23 @@ const Login = () => {
                             size="large"
                             sx={{
                                 mt: 2,
-                                backgroundColor: '#6200ea',
-                                '&:hover': { backgroundColor: '#7c4dff' },
-                                fontWeight: 'bold',
+                                background: 'linear-gradient(45deg, #6200ea 30%, #b388ff 90%)',
+                                color: 'white',
+                                fontWeight: 700,
                                 py: 1.5,
-                                fontSize: '1.1rem',
-                                borderRadius: 2
+                                fontSize: '1rem',
+                                borderRadius: 8,
+                                textTransform: 'none',
+                                boxShadow: '0 4px 15px rgba(98, 0, 234, 0.3)',
+                                transition: 'all 0.3s ease',
+                                '&:hover': { 
+                                    background: 'linear-gradient(45deg, #4a148c 30%, #7c4dff 90%)',
+                                    boxShadow: '0 8px 25px rgba(98, 0, 234, 0.5)',
+                                    transform: 'translateY(-2px)'
+                                },
                             }}
                         >
-                            INGRESAR
+                            Ingresar
                         </Button>
                     </Box>
                 </form>
