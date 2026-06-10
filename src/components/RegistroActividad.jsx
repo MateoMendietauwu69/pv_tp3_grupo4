@@ -1,4 +1,4 @@
-function RegistroActividad({ ultimaModificacion }) {
+const RegistroActividad = ({ ultimaModificacion }) => {
   if (!ultimaModificacion || ultimaModificacion === '') {
     return (
       <div className="registro-actividad">

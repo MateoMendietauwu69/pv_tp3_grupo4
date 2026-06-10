@@ -1,8 +1,16 @@
 import { useState } from "react";
-import "../css/FormularioProyecto.css";
+import '../css/FormularioProyecto.css'
 
+import {
+  Box,
+  Typography,
+  TextField,
+  MenuItem,
+  Button,
+  Paper
+} from "@mui/material";
 
-function FormularioProyecto({ onAgregar }) {
+const FormularioProyecto = ({ onAgregar }) => {
 
   const [formulario, setFormulario] = useState({
     titulo: "",
@@ -31,13 +39,14 @@ function FormularioProyecto({ onAgregar }) {
   } = formulario;
 
   const handleChange = (e) => {
+
     const { name, value } = e.target;
+
     setFormulario({
       ...formulario,
       [name]: value,
     });
   };
-
 
   const handleSubmit = (e) => {
 
@@ -88,110 +97,156 @@ function FormularioProyecto({ onAgregar }) {
   };
 
   return (
-    <div className="formulario-container">
 
-      <h3>Agregar Proyecto</h3>
+    <Paper id='form'
+      elevation={3}
+      sx={{
+        p: 3,
+        mt: 3,
+        mb: 3
+      }}
+    >
 
-      <form onSubmit={handleSubmit}>
+      <Typography
+        variant="h5"
+        gutterBottom
+         className='text'
+      >
+        Agregar Proyecto
+      </Typography>
 
-        <input
-          type="text"
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2
+        }}
+      >
+
+        <TextField
+          className="casilla"
+          label="Título del proyecto"
           name="titulo"
-          placeholder="Título del proyecto"
           value={titulo}
           onChange={handleChange}
+          fullWidth
+          required
         />
 
-        <input
-          type="text"
+        <TextField
+          label="Categoría"
           name="categoria"
-          placeholder="Categoría"
           value={categoria}
           onChange={handleChange}
+          fullWidth
+          required
         />
 
-        <select
+        <TextField
+          select
+          label="Estado"
           name="estado"
           value={estado}
           onChange={handleChange}
+          fullWidth
         >
-          <option value="Pendiente">
+          <MenuItem value="Pendiente">
             Pendiente
-          </option>
+          </MenuItem>
 
-          <option value="En curso">
+          <MenuItem value="En curso">
             En curso
-          </option>
+          </MenuItem>
 
-          <option value="Completado">
+          <MenuItem value="Completado">
             Completado
-          </option>
+          </MenuItem>
 
-        </select>
+        </TextField>
 
-        <input
-          type="text"
+        <TextField
+          label="Descripción del proyecto"
           name="descripcion"
-          placeholder="Descripción del proyecto"
           value={descripcion}
           onChange={handleChange}
+          multiline
+          fullWidth
         />
 
-        <input
+        <TextField
           type="date"
+          label="Fecha"
           name="fecha"
           value={fecha}
           onChange={handleChange}
+          InputLabelProps={{
+            shrink: true
+          }}
+          fullWidth
         />
 
-        <input 
-          type="text"
+        <Typography variant="h6"  className='text'>
+          Links
+        </Typography>
+
+        <TextField
+          label="Link PDF"
           name="pdf"
-          placeholder="Link PDF"
           value={pdf}
           onChange={handleChange}
+          fullWidth
         />
 
-        <input 
-          type="text"
+        <TextField
+          label="Link Drive"
           name="drive"
-          placeholder="Link Drive"
           value={drive}
           onChange={handleChange}
+          fullWidth
         />
 
-        <input 
-          type="text"
+        <TextField
+          label="Link Github"
           name="github"
-          placeholder="Link Github"
           value={github}
           onChange={handleChange}
+          fullWidth
         />
 
-        <input 
-          type="text"
+        <Typography variant="h6" className='text'>
+          Integrante
+        </Typography>
+
+        <TextField
+          label="Nombre integrante"
           name="nombre"
-          placeholder="Nombre integrante"
           value={nombre}
           onChange={handleChange}
+          fullWidth
         />
 
-        <input 
-          type="text"
+        <TextField
+          label="Rol integrante"
           name="rol"
-          placeholder="Rol integrante"
           value={rol}
           onChange={handleChange}
+          fullWidth
         />
 
-        <button type="submit">
-          Agregar
-        </button>
+        <Button
+          type="submit"
+          variant="contained"
+          size="large"
+        >
+          Agregar Proyecto
+        </Button>
 
-      </form>
+      </Box>
 
-    </div>
+    </Paper>
   );
-}
+};
 
 export default FormularioProyecto;

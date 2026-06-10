@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import proyectoService from '../services/proyectoService.js'
 import FormularioProyecto from './FormularioProyecto.jsx'
 import ProyectoCard from './ProyectoCard.jsx'
@@ -7,7 +7,7 @@ import DetalleProyecto from '../views/DetalleProyecto.jsx'
 
 import '../css/ListaProyectos.css'
 
-function ListaPro() {
+const ListaPro = () => {
 
     const [proyectos, setProyectos] = useState(
         proyectoService.obtenerProyectosDisponibles()
@@ -17,18 +17,18 @@ function ListaPro() {
 
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null)
 
-    const [ultimaModificacion, setUltimaModificacion] = useState('')
+    const [ultimaModificacion, setUltimaModificacion] = useState(null)
 
     const [contadorCambios, setContadorCambios] = useState(0)
 
-    // useEffect: se ejecuta cada vez que cambia el array de proyectos
-    useEffect(() => {
-       if (contadorCambios === 0)
-        {
-        return
-        }
-        setUltimaModificacion(new Date().toLocaleString())
-    },[contadorCambios])
+useEffect(() => {
+   
+    if (contadorCambios === 0) {
+        return;
+    }
+    
+    setUltimaModificacion(Date.now()); 
+}, [contadorCambios]);
 
     // Agregar proyecto
     const handleAgregar = (nuevoProyecto) => {
@@ -71,7 +71,7 @@ function ListaPro() {
         }
     }
 
-    return(
+    return (
         <>
             <div>
 
@@ -82,12 +82,10 @@ function ListaPro() {
                     type="text"
                     placeholder="Buscar proyecto..."
                     value={busqueda}
-                    onChange={(e) => handleBuscar(e.target.value)}
-                />
+                    onChange={(e) => handleBuscar(e.target.value)} />
 
                 <FormularioProyecto
-                    onAgregar={handleAgregar}
-                />
+                    onAgregar={handleAgregar} />
 
                 <ul>
 
@@ -97,8 +95,7 @@ function ListaPro() {
                             key={proyecto.id}
                             proyecto={proyecto}
                             onEliminar={handleEliminar}
-                            onVerDetalle={(id) => setProyectoSeleccionado(id)}
-                        />
+                            onVerDetalle={(id) => setProyectoSeleccionado(id)} />
 
                     ))}
 
@@ -106,16 +103,14 @@ function ListaPro() {
 
                 {proyectoSeleccionado && (
                     <div ref={(el) => el && el.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
-                        <DetalleProyecto 
-                            idProp={proyectoSeleccionado} 
-                            onVolver={() => setProyectoSeleccionado(null)} 
-                        />
+                        <DetalleProyecto
+                            idProp={proyectoSeleccionado}
+                            onVolver={() => setProyectoSeleccionado(null)} />
                     </div>
                 )}
 
                 <RegistroActividad
-                    ultimaModificacion={ultimaModificacion}
-                />
+                    ultimaModificacion={ultimaModificacion} />
 
             </div>
         </>
