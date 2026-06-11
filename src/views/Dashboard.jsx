@@ -7,7 +7,7 @@ import {
   CardContent
 } from "@mui/material";
 
-function Dashboard() {
+const Dashboard = () => {
 
   // Métricas simuladas
   const totalProyectos = 12;
