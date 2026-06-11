@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import proyectoService from '../services/proyectoService';
 import '../css/Dashboard.css' 
 import {
   Container,
@@ -9,11 +11,18 @@ import {
 
 const Dashboard = () => {
 
-  // Métricas simuladas
-  const totalProyectos = 12;
-  const proyectosEnCurso = 5;
-  const proyectosCompletados = 4;
-  const proyectosPendientes = 3;
+  const [proyectos, setProyectos] = useState([]);
+
+  useEffect(() => {
+    // Obtenemos los proyectos actualizados al cargar el Dashboard
+    setProyectos(proyectoService.obtenerProyectosDisponibles());
+  }, []);
+
+  // Métricas dinámicas calculadas a partir del array de proyectos
+  const totalProyectos = proyectos.length;
+  const proyectosEnCurso = proyectos.filter(p => p.estado === 'En curso').length;
+  const proyectosCompletados = proyectos.filter(p => p.estado === 'Completado').length;
+  const proyectosPendientes = proyectos.filter(p => p.estado === 'Pendiente').length;
 
   return (
     <Container sx={{ mt: 4 }}>
