@@ -3,10 +3,14 @@ import { createContext, useState, useEffect } from "react";
 export const UsuarioContext = createContext();
 
 export const UsuarioProvider = ({ children }) => {
-
     const [usuario, setUsuario] = useState(() => {
         const guardado = localStorage.getItem("usuario_tp3");
-        return guardado ? JSON.parse(guardado) : null;
+        return guardado ? JSON.parse(guardado) : {
+            nombre: "Usuario de Prueba",
+            dni: "12345678",
+            rol: "Alumno",
+            institucion: "Escuela de Minas"
+        };
     });
 
     useEffect(() => {

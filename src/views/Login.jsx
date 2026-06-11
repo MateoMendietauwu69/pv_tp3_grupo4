@@ -4,16 +4,24 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Paper, TextField, Button, Typography, Box } from '@mui/material';
 
 const Login = () => {
-    const [nombre, setNombre] = useState('');
     const [dni, setDni] = useState('');
+    const [password, setPassword] = useState('');
     const { login } = useContext(UsuarioContext);
     const navigate = useNavigate();
+
+    const handleDniChange = (e) => {
+        // Permite solo números y recorta a 8 caracteres máximo
+        const valor = e.target.value.replace(/[^0-9]/g, '');
+        if (valor.length <= 8) {
+            setDni(valor);
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const datosUsuario = {
-            nombre: nombre || "Nombre de prueba",
-            dni: dni || "12345678",
+            nombre: "Usuario " + dni,
+            dni: dni,
             rol: "Alumno",
             institucion: "Escuela de Minas"
         };
@@ -50,11 +58,12 @@ const Login = () => {
                 <form onSubmit={handleSubmit}>
                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3.5 }}>
                         <TextField 
-                            label="Nombre" 
+                            label="DNI (Usuario)" 
                             variant="filled" 
-                            value={nombre} 
-                            onChange={(e) => setNombre(e.target.value)} 
+                            value={dni} 
+                            onChange={handleDniChange} 
                             required 
+                            placeholder="Máximo 8 números"
                             InputLabelProps={{ style: { color: '#f5f5f5' } }}
                             InputProps={{ 
                                 disableUnderline: true,
@@ -76,11 +85,11 @@ const Login = () => {
                             }}
                         />
                         <TextField 
-                            label="DNI" 
+                            label="Contraseña" 
                             variant="filled" 
                             type="password"
-                            value={dni} 
-                            onChange={(e) => setDni(e.target.value)} 
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)} 
                             required 
                             InputLabelProps={{ style: { color: '#f5f5f5' } }}
                             InputProps={{ 
