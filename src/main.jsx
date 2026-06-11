@@ -10,7 +10,7 @@ import './css/index.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <UsuarioProvider>
-      <BrowserRouter> {/* Envolvemos la aplicación con el BrowserRouter */}
+      <BrowserRouter> {}
         <App />
       </BrowserRouter>
     </UsuarioProvider>
