@@ -44,8 +44,14 @@ const PerfilUsuario = () => {
                                 variant="filled"
                                 value={datosActualizados.nombre} 
                                 onChange={handleChange} 
-                                InputLabelProps={{ style: { color: '#b0b0b0' } }}
-                                InputProps={{ style: { color: 'white', backgroundColor: 'rgba(255,255,255,0.05)' } }}
+                                sx={{
+                                    "& .MuiInputBase-input": { color: "white" },
+                                    "& .MuiInputLabel-root": { color: "white" },
+                                    "& .MuiInputLabel-root.Mui-focused": { color: "#b0b0b0" },
+                                    backgroundColor: "#7c4dff",
+                                    borderRadius: "10px",
+                                    outline: "2px solid white"
+                                }}
                             />
                         ) : (
                             <Box>
@@ -64,8 +70,14 @@ const PerfilUsuario = () => {
                                 variant="filled"
                                 value={datosActualizados.dni} 
                                 onChange={handleChange} 
-                                InputLabelProps={{ style: { color: '#b0b0b0' } }}
-                                InputProps={{ style: { color: 'white', backgroundColor: 'rgba(255,255,255,0.05)' } }}
+                                sx={{
+                                    "& .MuiInputBase-input": { color: "white" },
+                                    "& .MuiInputLabel-root": { color: "white" },
+                                    "& .MuiInputLabel-root.Mui-focused": { color: "#b0b0b0" },
+                                    backgroundColor: "#7c4dff",
+                                    borderRadius: "10px",
+                                    outline: "2px solid white"
+                                }}
                             />
                         ) : (
                             <Box>
@@ -84,8 +96,14 @@ const PerfilUsuario = () => {
                                 variant="filled"
                                 value={datosActualizados.rol} 
                                 onChange={handleChange} 
-                                InputLabelProps={{ style: { color: '#b0b0b0' } }}
-                                InputProps={{ style: { color: 'white', backgroundColor: 'rgba(255,255,255,0.05)' } }}
+                                sx={{
+                                    "& .MuiInputBase-input": { color: "white" },
+                                    "& .MuiInputLabel-root": { color: "white" },
+                                    "& .MuiInputLabel-root.Mui-focused": { color: "#b0b0b0" },
+                                    backgroundColor: "#7c4dff",
+                                    borderRadius: "10px",
+                                    outline: "2px solid white"
+                                }}
                             />
                         ) : (
                             <Box>
@@ -104,8 +122,14 @@ const PerfilUsuario = () => {
                                 variant="filled"
                                 value={datosActualizados.institucion} 
                                 onChange={handleChange} 
-                                InputLabelProps={{ style: { color: '#b0b0b0' } }}
-                                InputProps={{ style: { color: 'white', backgroundColor: 'rgba(255,255,255,0.05)' } }}
+                                sx={{
+                                    "& .MuiInputBase-input": { color: "white" },
+                                    "& .MuiInputLabel-root": { color: "white" },
+                                    "& .MuiInputLabel-root.Mui-focused": { color: "#b0b0b0" },
+                                    backgroundColor: "#7c4dff",
+                                    borderRadius: "10px",
+                                    outline: "2px solid white"
+                                }}
                             />
                         ) : (
                             <Box>
